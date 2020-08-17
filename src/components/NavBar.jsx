@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { AppBar, Button, Grid } from '@material-ui/core';
+import React from 'react';
+import { AppBar, Grid, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 function NavBar() {
@@ -10,32 +10,36 @@ function NavBar() {
   ];
 
   return (
-    <>
-      <AppBar position='sticky'>
-        <Grid
-          container
-          spacing={3}
-          style={{ width: '100%' }}
-          justify='space-evenly'
-          alignItems='center'
-        >
-          {links.map((l) => (
-            <Grid item>
-              <Link key={l.path} to={l.path}>
+    <AppBar style={{ background: '#352535' }} position='sticky'>
+      <Grid
+        container
+        spacing={3}
+        style={{ width: '100%' }}
+        justify='center'
+        alignItems='center'
+        wrap='nowrap'
+      >
+        {links.map((l) => (
+          <Grid key={l.path} item xs={3}>
+            <Typography variant='h6'>
+              <Link
+                style={{ textDecoration: 'none', color: 'white' }}
+                to={l.path}
+              >
                 {l.text}
               </Link>
-            </Grid>
-          ))}
-          <Grid item>
-            <img
-              src='https://api.nasa.gov/assets/footer/img/favicon-192.png'
-              alt='NASA Logo'
-              style={{ width: '50px' }}
-            />
+            </Typography>
           </Grid>
+        ))}
+        <Grid item xs={2}>
+          <img
+            src='https://api.nasa.gov/assets/footer/img/favicon-192.png'
+            alt='NASA Logo'
+            style={{ width: '60px', position: 'relative', left: '10px' }}
+          />
         </Grid>
-      </AppBar>
-    </>
+      </Grid>
+    </AppBar>
   );
 }
 
