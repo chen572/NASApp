@@ -4,6 +4,7 @@ const DataSources = new (require('../dataSources/DataSources'))()
 
 router.get('/item', async (req, res) => {
   const { id } = req.query;
+
   res.send(
     id
       ? await DataSources.MongoClient.getItemByID(id)

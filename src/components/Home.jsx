@@ -13,7 +13,6 @@ function Home() {
     }
     getPictureOfTheDay();
   }, []);
-  console.log(pictureOfTheDay)
   return (
     <div>
       {

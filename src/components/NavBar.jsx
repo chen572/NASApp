@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 function NavBar() {
   const links = [
-    { text: 'Home', path: '/home' },
+    { text: 'Home', path: '/' },
     { text: 'Search', path: '/search' },
-    { text: 'Favourites', path: '/favorite' },
+    { text: 'Favourites', path: '/favourites' },
   ];
 
   return (
