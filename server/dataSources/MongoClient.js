@@ -1,4 +1,5 @@
-require('mongoose').connect('mongodb://localhost/NASApp', { useNewUrlParser: true, useUnifiedTopology: true })
+require('dotenv').config()
+require('mongoose').connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 const NasaItem = require('../model/NasaItem')
 
 class MongoClient {
