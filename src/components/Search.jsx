@@ -36,7 +36,7 @@ function Search(props) {
   async function getSearchResults() {
     setSearchResults({ ...searchResults, loading: true });
     const results = await axios.get(
-      `http://localhost:3001/search?q=${searchTerm}`
+      `/search?q=${searchTerm}`
     );
     setSearchResults({ results: results.data, loading: false });
   }

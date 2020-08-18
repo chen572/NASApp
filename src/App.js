@@ -15,7 +15,7 @@ function App() {
   const [snackBarData, setSnackBarData] = useState({ open: false, severity: '', text: ''})
 
   async function updateFavourites() {
-    const favourites = await axios.get('http://localhost:3001/item')
+    const favourites = await axios.get('/item')
     setFavourites({ data: favourites.data, loading: false })
   }
 
@@ -25,7 +25,7 @@ function App() {
 
   async function saveFavouriteToDb(item) {
     setFavourites({ ...favourites, loading: true })
-    const itemFromDb = await axios.post('http://localhost:3001/item', { item }).catch(e => e)
+    const itemFromDb = await axios.post('/item', { item }).catch(e => e)
     await updateFavourites()
     setSnackBarData({ open: true, severity: 'success', text: 'Saved!'})
     return itemFromDb._id
@@ -33,7 +33,7 @@ function App() {
   
   async function deleteFavouriteFromDb(itemId) {
     setFavourites({ ...favourites, loading: true })
-    await axios.delete(`http://localhost:3001/item?id=${itemId}`)
+    await axios.delete(`/item?id=${itemId}`)
     const favs = [...favourites.data]
     const deletedFavourite = favs.find(f => f._id === itemId) 
     deletedFavourite.deleted = true

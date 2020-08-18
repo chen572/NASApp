@@ -12,7 +12,7 @@ function Favourite(props) {
     async function getFavourite() {
       favourites.loading
         ? setFavourite({
-            data: (await axios.get(`http://localhost:3001/item?id=${id}`)).data || {title: 'Not Found'},
+            data: (await axios.get(`/item?id=${id}`)).data || {title: 'Not Found'},
             loading: false,
           })
         : setFavourite({

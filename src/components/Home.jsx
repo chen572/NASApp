@@ -8,12 +8,12 @@ function Home() {
 
   useEffect(() => {
     async function getPictureOfTheDay() {
-      const pictureData = await axios.get('http://localhost:3001/picture');
+      const pictureData = await axios.get('/picture');
       setPictureOfTheDay({ ...pictureData.data, loading: false });
     }
     getPictureOfTheDay();
   }, []);
-  
+
   return (
     <div>
       {
