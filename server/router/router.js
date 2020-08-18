@@ -23,7 +23,12 @@ router.post('/item', async (req, res) => {
 
 router.delete('/item', async (req, res) => {
   const { id } = req.query;
-  res.send(await DataSources.MongoClient.deleteItemFromDbByID(id))
+  const deltedItem = await DataSources.MongoClient.deleteItemFromDbByID(id)
+  if (DataSources.MongoClient.isValidItem(deltedItem)) {
+    res.sendStatus(204)
+  } else {
+    res.sendStatus(400)
+  }
 })
 
 router.get('/picture', async (req, res) => {
