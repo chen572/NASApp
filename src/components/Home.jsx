@@ -13,6 +13,7 @@ function Home() {
     }
     getPictureOfTheDay();
   }, []);
+  
   return (
     <div>
       {

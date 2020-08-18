@@ -4,7 +4,7 @@ import MediaCard from './MediaCard';
 import Loading from './Loading';
 
 function Favourite(props) {
-  const [favourite, setFavourite] = useState({ data: [], loading: true });
+  const [favourite, setFavourite] = useState({ data: {}, loading: true });
   const { favourites, match } = props;
   const { id } = match.params;
 
@@ -12,11 +12,11 @@ function Favourite(props) {
     async function getFavourite() {
       favourites.loading
         ? setFavourite({
-            data: (await axios.get(`http://localhost:3001/item?id=${id}`)).data,
+            data: (await axios.get(`http://localhost:3001/item?id=${id}`)).data || {title: 'Not Found'},
             loading: false,
           })
         : setFavourite({
-            data: favourites.data.find((i) => i._id === id),
+            data: favourites.data.find((i) => i._id === id) || {title: 'Not Found'},
             loading: false,
           });
     }

@@ -14,7 +14,11 @@ router.get('/item', async (req, res) => {
 
 router.post('/item', async (req, res) => {
   const { item } = req.body;
-  res.send(await DataSources.MongoClient.saveItemToDB(item))
+  if (DataSources.MongoClient.isValidItem(item)) {
+    res.send(await DataSources.MongoClient.saveItemToDB(item))
+  } else {
+    res.sendStatus(400)
+  }
 })
 
 router.delete('/item', async (req, res) => {

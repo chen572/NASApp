@@ -2,6 +2,10 @@ require('mongoose').connect('mongodb://localhost/NASApp', { useNewUrlParser: tru
 const NasaItem = require('../model/NasaItem')
 
 class MongoClient {
+  isValidItem(item) {
+    return item.title && item.description && item.imgUrl ? true : false
+  }
+
   getAllItems() {
     return NasaItem.find({})
   }

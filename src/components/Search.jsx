@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import {
   makeStyles,
   Paper,
   IconButton,
   InputBase,
   Grid,
-} from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
-import MediaCard from './MediaCard';
-import Loading from './Loading';
+} from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import MediaCard from "./MediaCard";
+import Loading from "./Loading";
 
 const useStyles = makeStyles({
   root: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
+    padding: "2px 4px",
+    display: "flex",
+    alignItems: "center",
   },
   input: {
     flex: 1,
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 });
 
 function Search(props) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState({
     results: [],
     loading: false,
@@ -47,7 +47,7 @@ function Search(props) {
         <InputBase
           className={classes.input}
           placeholder="Search Nasa's Pictures"
-          inputProps={{ 'aria-label': "search Nasa's pictures" }}
+          inputProps={{ "aria-label": "search Nasa's pictures" }}
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -55,14 +55,14 @@ function Search(props) {
         />
         <IconButton
           className={classes.iconButton}
-          aria-label='search'
+          aria-label="search"
           onClick={getSearchResults}
         >
           <SearchIcon />
         </IconButton>
       </Paper>
 
-      <Grid container direction='column' wrap='nowrap'>
+      <Grid container direction="column" wrap="nowrap">
         {searchResults.loading ? (
           <Loading />
         ) : (
@@ -72,7 +72,7 @@ function Search(props) {
               item={r}
               favouritesActions={props.favouritesActions}
               favouriteList={props.favouriteList}
-              page='search'
+              page="search"
             />
           ))
         )}

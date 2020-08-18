@@ -13,8 +13,8 @@ import { compareItems } from '../utils/utils';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: '800px',
     minWidth: '95vw',
+    maxWidth: '50vw',
     margin: 'auto',
     marginTop: '10px',
     marginBottom: '10px',
@@ -37,17 +37,18 @@ const useStyles = makeStyles({
 function MediaCard(props) {
   const classes = useStyles();
   const showDescription = ['favourite', 'home'];
-  const showLikeButton = ['favourite', 'favourites', 'search'];
+  const showLikeButton = ['favourites', 'search'];
   const { item, page, favouritesActions, favouriteList } = props;
 
-  const [saved, setSaved] = useState(page === 'search' ? false : true);
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    if (page === 'search') {
+    if (page === 'search' || page === 'favourites') {
       const itemInFavourites = favouriteList.find((favouriteItem) =>
         compareItems(favouriteItem, item)
       );
-      if (itemInFavourites) {
+      debugger
+      if (itemInFavourites && !itemInFavourites.deleted) {
         item._id = itemInFavourites._id;
         setSaved(true);
       }
